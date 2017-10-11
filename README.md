@@ -32,7 +32,7 @@ Then inside the pinch: method, use the shared instance of TMImageZoom and call t
 
 ## Authors
 
-* **Thomas Maw** - https://github.com/ios4vn
+* **Hai Trieu** - https://github.com/ios4vn
 
 ## License
 
