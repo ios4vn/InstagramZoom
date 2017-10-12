@@ -36,7 +36,7 @@ Then inside the pinch: method, use the shared instance of TMImageZoom and call t
 
 ## License
 
-> Copyright (c) 2009-2016: Thomas Maw
+> Copyright (c) 2009-2017: Hai Trieu
 >
 > Permission is hereby granted, free of charge, to any person obtaining
 > a copy of this software and associated documentation files (the
