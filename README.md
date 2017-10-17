@@ -5,7 +5,7 @@ Easily add zoom functionality similar to Instagram
 
 ## Getting Started
 
-Swift version of TMImageZoom https://github.com/twomedia/TMImageZoom
+Base on Object-C version of TMImageZoom https://github.com/twomedia/TMImageZoom
 
 Demo will be update later
 
