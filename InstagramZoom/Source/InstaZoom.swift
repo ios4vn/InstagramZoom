@@ -89,17 +89,21 @@ class InstaZoom: NSObject {
             // Calculate new image scale.
             let currentScale = (currentImageView?.frame.size.width)! / startingRect.size.width
             let newScale = currentScale * theGesture.scale
-            currentImageView?.frame = CGRect(x: (currentImageView?.frame.origin.x)!, y: (currentImageView?.frame.origin.y)!, width: startingRect.size.width*newScale, height: startingRect.size.height*newScale)
             
             // Calculate new overlay alpha
             overlayColorView.alpha = MinOverlayAlpha + (newScale - 1) < MaxOverlayAlpha ? MinOverlayAlpha + (newScale - 1) : MaxOverlayAlpha;
             
             // Calculate new center
             let currentWindow = UIApplication.shared.keyWindow
+            let pinchCenter = CGPoint(x: theGesture.location(in: currentWindow).x - (currentWindow?.bounds.midX)!,
+                                      y: theGesture.location(in: currentWindow).y - (currentWindow?.bounds.midY)!)
             let centerXDif = firstCenterPoint.x - theGesture.location(in: currentWindow).x
             let centerYDif = firstCenterPoint.y - theGesture.location(in: currentWindow).y
-            currentImageView?.center = CGPoint(x: startingRect.origin.x + (startingRect.size.width/2) - centerXDif, y: startingRect.origin.y + (startingRect.size.height/2) - centerYDif)
-            
+            let transform = currentWindow?.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
+                .scaledBy(x: newScale, y: newScale)
+                .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
+                .translatedBy(x: -centerXDif, y: -centerYDif)
+            currentImageView?.transform = transform!
             // Reset the scale
             theGesture.scale = 1
         }
